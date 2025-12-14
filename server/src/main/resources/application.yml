@@ -1,0 +1,75 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    driver-class-name: ${fuzhou.datasource.driver-class-name}
+    url: jdbc:mysql://${fuzhou.datasource.host}:${fuzhou.datasource.port}/${fuzhou.datasource.database}
+    username: ${fuzhou.datasource.username}
+    password: ${fuzhou.datasource.password}
+  data:
+    redis:
+      host: ${fuzhou.redis.host}
+      port: ${fuzhou.redis.port}
+      database: ${fuzhou.redis.database}
+
+  mail:
+     host:  ${fuzhou.mail.host}
+     username: ${fuzhou.mail.username}
+     password: ${fuzhou.mail.password}
+     default-encoding: ${fuzhou.mail.default-encoding}
+     port: 465
+     auth: true
+     properties:
+       mail:
+         smtp:
+           ssl:
+             enable: true
+       imap:
+         ssl:
+           socketFactory:
+             fallback: false
+
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.fuzhou
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      fuzhou:
+        mapper: debug
+        service: info
+        controller: info
+
+fuzhou:
+  jwt:
+  # 设置jwt签名加密时使用的秘钥
+   user-secret-key: ${fuzhou.jwt.user-secret-key}
+  # 设置jwt过期时间
+   user-ttl: 900000
+  # 设置前端传递过来的令牌名称
+   user-token-name: token
+   refresh-secret-key: ${fuzhou.jwt.refresh-secret-key}
+   refresh-ttl: 86400000
+
+
+  alioss:
+    endpoint: ${fuzhou.alioss.endpoint}
+    access-key-id: ${fuzhou.alioss.access-key-id}
+    access-key-secret: ${fuzhou.alioss.access-key-secret}
+    bucket-name: ${fuzhou.alioss.bucket-name}
+
+doubao:
+  api-key: c6bf13e6-f8d9-4302-a535-b45fa7114e79
+  model-id: doubao-1.5-pro-32k-250115
+  api-url: https://ark.cn-beijing.volces.com/api/v3/chat/completions

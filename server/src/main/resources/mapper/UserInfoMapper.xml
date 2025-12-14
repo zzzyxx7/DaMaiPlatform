@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fuzhou.server.mapper.UserInfoMapper">
+    <update id="updateUserInfo">
+        UPDATE user
+        <set>
+            <!-- 1. test 条件加 userInfoVO. 前缀 -->
+            <if test="userInfoVO.name != null and userInfoVO.name != ''">
+                <!-- 2. #{ } 加 userInfoVO. 前缀 -->
+                name = #{userInfoVO.name},
+            </if>
+            <if test="userInfoVO.account != null and userInfoVO.account != ''">
+                account = #{userInfoVO.account},
+            </if>
+            <if test="userInfoVO.email != null and userInfoVO.email != ''">
+                email = #{userInfoVO.email},
+            </if>
+            <if test="userInfoVO.image != null and userInfoVO.image != ''">
+                image = #{userInfoVO.image},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="getUserInfo" resultType="com.fuzhou.pojo.entity.User">
+        SELECT id, name, account, email, image, create_time, status
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectCityByUserId" resultType="java.lang.String">
+        SELECT city
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>

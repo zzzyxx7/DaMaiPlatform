@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fuzhou.server.mapper.ShowMapper">
+
+    <select id="selectByCity" resultType="com.fuzhou.pojo.vo.ShowVO">
+        SELECT s.id, s.title, s.image, s.city, s.venue_name, sort_id, so.name as sort_name
+        FROM `show` as s
+        LEFT JOIN `sort` as so ON s.sort_id = so.id
+        WHERE city = #{city}
+    </select>
+</mapper>

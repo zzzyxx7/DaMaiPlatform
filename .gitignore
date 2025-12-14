@@ -1,0 +1,21 @@
+# 1. 忽略 IDEA 相关（不变）
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# 2. 忽略所有 target 目录（编译产物，不变）
+target/
+**/target/
+
+# 3. 新增：忽略所有 test 目录（测试代码/资源，包括子模块）
+test/
+**/test/
+src/test/
+**/src/test/
+
+# 4. 新增：忽略 application-dev.yml（开发环境配置，所有目录都匹配）
+application-dev.yml
+**/application-dev.yml
+src/main/resources/application-dev.yml
