@@ -42,7 +42,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional> <!-- 避免子模块（�?server）强制依�?-->
+            <optional>true</optional> <!-- 避免子模块（�?server）强制依�?-->
         </dependency>
 
         <dependency>
@@ -53,6 +53,11 @@
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
         </dependency>
     </dependencies>
 
